@@ -20,27 +20,28 @@ export default function AuthProvider({children}){
         localStorage.setItem('userLogged', JSON.stringify(data));
     }
 
-    async function signUp(name, nationality, birth, addres, contact, number_id, issue_id, passport, email){
+    async function signUp(name, user, nationality, birth, addres, contact, number_id, issue_id, passport, email){
 
         axios.post('http://127.0.0.1:8000/customer/', {
+            user: { username: user},
             name: name,
             nationality: nationality,
             birth_date: birth,
             address: addres,
-            contact_number: contact,
-            number_id: number_id,
+            contact_number: parseInt(contact),
+            number_id: parseInt(number_id),
             issue_id: issue_id,
-            passport: passport,
+            passport: parseInt(passport),
             email: email
         })
         .then(function (data) {
             setUser(data);
             setLocalUser(data);
-            toast.success('User Registered!');
+            toast.success('Usuario registrado!');
         })
         .catch((err) => {
             console.log(err);
-            toast.error('Ops.. something wrong it happened here');
+            toast.error('Ops.. Algo de errado aconteceu aqui!');
         })
     }
 
@@ -50,15 +51,15 @@ export default function AuthProvider({children}){
             password: passwd
         })
         .then(function (data) {
-            console.log(data);
-            // verificar se veio o token
-            setUser(data);
-            setLocalUser(data);
-            toast.success(`Welcome back ${username}`);
+            if(data.data.access != null){
+                setUser(data);
+                setLocalUser(data);
+                toast.success(`Bem vindo de volta ${username}!`);
+            }
         })
         .catch(function (err) {
             console.log(err);
-            toast.error('Ops.. something wrong it happened here');
+            toast.error('Ops.. Algo de errado aconteceu aqui!');
         });
     }
 

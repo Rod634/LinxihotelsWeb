@@ -26,10 +26,10 @@ export default function SignIn (){
                 <label>Password</label>
                 <input type="password" placeholder="****" onChange={(e)=>{setPasswd(e.target.value)}}/>
 
-                <button type="submit">signIn</button>
+                <button type="submit">Logar</button>
             </form>
             
-            <Link to="/signUp">SignUp</Link>
+            <Link to="/signUp">Cadastro ?</Link>
 
         </div>
     )
