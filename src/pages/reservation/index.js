@@ -5,7 +5,6 @@ import { toast } from 'react-toastify';
 export default function Reservation (props){
 
     const id = props.match.params.id;
-    
 
     const [room, setRoom] = useState();
     const [reservations, setReservations] = useState();
@@ -90,12 +89,7 @@ export default function Reservation (props){
         return filteredReservation;
     }
     
-    function checkIsChange(){
-        if(getFilteredReservation()){
-            return true;
-        }
-        return false;
-    }
+    console.log(reservations)
 
     function makeReservation(e) {
         e.preventDefault();
@@ -103,7 +97,7 @@ export default function Reservation (props){
         var filter = getFilteredReservation();
 
         if(cardCode !== null && cardNumber !== null){
-            if(!checkIsChange()){
+            if(filter.length === 0){
                 axios.post('http://127.0.0.1:8000/reservation/', getParams(), getHeader())
                 .then(function (data) {
                     toast.success('Seu quarto foi reservado!');

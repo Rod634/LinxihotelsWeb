@@ -81,7 +81,6 @@ export default function AuthProvider({children}){
         axios.get('http://127.0.0.1:8000/customer/')
         .then(function (data) {
             data.data.map((d) => {
-                console.log(d);
                 if(d.user.username == user){
                     setUser(d);
                     setLocalUser(d);
