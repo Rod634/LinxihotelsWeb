@@ -54,10 +54,24 @@ export default function Reservation (props){
     }
 
     function getServices(){
+        var filteredServices = new Array;
+
+        service.filter((s) =>{
+            serviceId.forEach(e => {
+              if(e == s.pk){
+                filteredServices.push(s);
+                console.log('achou');
+              }
+            });
+        })
+
+        setService(filteredServices);
      //filtrar todos os serviços pelos ids selecionados
     }
 
     function getParams(){
+        getServices();
+
         return {
             "customer": user,
             "company": company,
