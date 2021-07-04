@@ -29,11 +29,10 @@ export default function Catalog (){
                 </div>
             ) : 
                 rooms.map((room) => {
-                    console.log(room);
                     if(room.status != "Ocupado")
                     return (
                         <div>
-                            <Link to={"/reservation/" + room.pk}>
+                            <Link to={"/reservation/" + room.id}>
                                <img src={room.image_url}/>
                                <p>{room.category} para {room.capacity} em {room.company.name}</p>
                             </Link>
