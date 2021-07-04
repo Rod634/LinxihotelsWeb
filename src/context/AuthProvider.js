@@ -29,10 +29,8 @@ export default function AuthProvider({children}){
         localStorage.setItem('token', JSON.stringify(data));
     }
 
-    function signUp(name, user, nationality, birth, addres, contact, number_id, issue_id, passport, email){
-
+    function signUp(name, nationality, birth, addres, contact, number_id, issue_id, passport, email, img){
         axios.post('http://127.0.0.1:8000/customer/', {
-            user: { username: user},
             name: name,
             nationality: nationality,
             birth_date: birth,
@@ -41,11 +39,11 @@ export default function AuthProvider({children}){
             number_id: parseInt(number_id),
             issue_id: issue_id,
             passport: parseInt(passport),
+            image_url: img,
             email: email
         })
         .then(function (data) {
-            getUserAndSet(user);
-            toast.success('Usuario registrado!');
+            toast.success('Usuario registrado, Faça login com a senha enviada por email');
         })
         .catch((err) => {
             console.log(err);
@@ -81,7 +79,7 @@ export default function AuthProvider({children}){
         axios.get('http://127.0.0.1:8000/customer/')
         .then(function (data) {
             data.data.map((d) => {
-                if(d.user.username == user){
+                if(d.name == user){
                     setUser(d);
                     setLocalUser(d);
                 };

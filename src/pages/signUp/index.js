@@ -1,10 +1,11 @@
 import React, { useContext, useState } from 'react';
 import { AuthContext } from '../../context/AuthProvider';
-import {Link} from 'react-router-dom';
+import {Link, Redirect} from 'react-router-dom';
+import { useHistory } from 'react-router';
 
 export default function SignUp (){
     const [name, setName] = useState('');
-    const [user, setUser] = useState('');
+    const [img, setImg] = useState('');
     const [nationality, setNationality] = useState('');
     const [birth, setBirth] = useState('');
     const [address, setAddress] = useState('');
@@ -15,11 +16,13 @@ export default function SignUp (){
     const [email, setEmail] = useState('');
     //const [passwd, setPasswd] = useState('');
     const {signUp} = useContext(AuthContext);
+    let history = useHistory();
 
     function SignUpHandle(e){
         e.preventDefault();
         if(passport !== '' || (number_id !== '' && issue_id !== '')){
-            signUp(name, user, nationality, birth, address, contact, number_id, issue_id, passport, email)
+            signUp(name, nationality, birth, address, contact, number_id, issue_id, passport, email, img)
+            history.push('/signIn');
         }
     }
 
@@ -28,8 +31,8 @@ export default function SignUp (){
             <form onSubmit={SignUpHandle}>
                 <h1>Cadastro</h1>
 
-                <label>Username</label>
-                <input type="text" placeholder="jose634" onChange={(e)=>{setUser(e.target.value)}}/>
+                <label>Imagem de perfil</label>
+                <input type="text" placeholder="jose634" onChange={(e)=>{setImg(e.target.value)}}/>
 
                 <label>Nome</label>
                 <input type="text" placeholder="José da Silva" onChange={(e)=>{setName(e.target.value)}}/>

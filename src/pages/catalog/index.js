@@ -22,7 +22,9 @@ export default function Catalog (){
 
     return (
         <div>
+            
             <Link to="/signin">logar</Link>
+            <Link to="/profile">perfil</Link>
             {rooms.length === 0 ? (
                 <div>
                     <h1>Nenhum quarto disponivel</h1>
