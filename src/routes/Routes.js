@@ -10,10 +10,11 @@ import SignUp from '../pages/signUp';
 export default function Routes(){
     return(
         <Switch>
-            <PrivateRoute exact path='/' component={SignIn}/>
+            <PrivateRoute exact path='/' component={Catalog}/>
+            <PrivateRoute exact isPrivate path='/catalogo' component={Catalog}/>
+            <PrivateRoute exact path='/signIn' component={SignIn}/>
             <PrivateRoute exact path='/signUp' component={SignUp}/>
-            <PrivateRoute exact path='/catalog' component={Catalog}/>
-            <PrivateRoute isPrivate exact path='/reservation' component={Reservation}/>
+            <PrivateRoute exact isPrivate path='/reservation/:id' component={Reservation}/>
             <PrivateRoute isPrivate exact path='/profile' component={Profile}/>
         </Switch>
     )
