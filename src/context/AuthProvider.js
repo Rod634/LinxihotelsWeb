@@ -5,22 +5,31 @@ const axios = require('axios');
 
 export default function AuthProvider({children}){
     const [user, setUser] = useState(null);
+    const [token, setToken] = useState(null);
     
     useEffect(()=>{
-        function loadUser(){
+        function loadUserAndToken(){
             const localUser = localStorage.getItem('userLogged');
+            const localToken = localStorage.getItem('token');
             if(localUser){
                 setUser(JSON.parse(localUser));
             }
+            if(localToken){
+                setToken(JSON.parse(localToken));
+            }
         }
-        loadUser();
+        loadUserAndToken();
     }, []);
 
     function setLocalUser(data){
         localStorage.setItem('userLogged', JSON.stringify(data));
     }
 
-    async function signUp(name, user, nationality, birth, addres, contact, number_id, issue_id, passport, email){
+    function setLocaToken(data){
+        localStorage.setItem('token', JSON.stringify(data));
+    }
+
+    function signUp(name, user, nationality, birth, addres, contact, number_id, issue_id, passport, email){
 
         axios.post('http://127.0.0.1:8000/customer/', {
             user: { username: user},
@@ -35,8 +44,7 @@ export default function AuthProvider({children}){
             email: email
         })
         .then(function (data) {
-            setUser(data);
-            setLocalUser(data);
+            getUserAndSet(user);
             toast.success('Usuario registrado!');
         })
         .catch((err) => {
@@ -45,15 +53,15 @@ export default function AuthProvider({children}){
         })
     }
 
-    async function signIn(username, passwd){
+    function signIn(username, passwd){
         axios.post('http://127.0.0.1:8000/api/token/', {
             username: username,
             password: passwd
         })
         .then(function (data) {
             if(data.data.access != null){
-                setUser(data);
-                setLocalUser(data);
+                getUserAndSet(username);
+                setLocaToken(data);
                 toast.success(`Bem vindo de volta ${username}!`);
             }
         })
@@ -63,9 +71,26 @@ export default function AuthProvider({children}){
         });
     }
 
-    async function signOut(){
+    function signOut(){
         localStorage.removeItem('userLogged');
+        localStorage.removeItem('token');
         setUser(null);
+    }
+
+    function getUserAndSet(user){
+        axios.get('http://127.0.0.1:8000/customer/')
+        .then(function (data) {
+            data.data.map((d) => {
+                console.log(d);
+                if(d.user.username == user){
+                    setUser(d);
+                    setLocalUser(d);
+                };
+            })
+        })
+        .catch(function (error) {
+            console.log(error);
+        })    
     }
 
     return(

@@ -10,11 +10,11 @@ export default function PrivateRoute({
     {
         const {signed} = useContext(AuthContext);
         if(!signed && isPrivate){
-            return ( <Redirect to="/catalog"/> );
+            return ( <Redirect to="/signIn"/> );
         }
 
         if(signed && (!isPrivate)){
-            return ( <Redirect to="/profile"/> );
+            return ( <Redirect to="/catalogo"/> );
         }
 
         return(
