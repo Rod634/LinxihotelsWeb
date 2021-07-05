@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import Header from '../../components/Header';
+import './index.css';
 
 export default function Catalog (){
 
@@ -22,9 +24,11 @@ export default function Catalog (){
 
     return (
         <div>
-            
-            <Link to="/signin">logar</Link>
-            <Link to="/profile">perfil</Link>
+            <Header/>
+            <div className="title_catalog">
+                <h1>Quartos disponiveis</h1>
+            </div>
+            <section className="cards">
             {rooms.length === 0 ? (
                 <div>
                     <h1>Nenhum quarto disponivel</h1>
@@ -33,15 +37,27 @@ export default function Catalog (){
                 rooms.map((room) => {
                     if(room.status != "Ocupado")
                     return (
-                        <div>
-                            <Link to={"/reservation/" + room.id}>
-                               <img src={room.image_url}/>
-                               <p>{room.category} para {room.capacity} em {room.company.name}</p>
-                            </Link>
-                        </div>
+                        
+                        <Link className="card" to={"/reservation/" + room.id}>
+                            <div className="card_image ">
+                                <img src={room.image_url}/>
+                                <div className="card_status">
+                                    <p>{room.status}</p>
+                                </div>
+                            </div>
+                            <div className="card_title">
+                                <h1>{room.category}</h1>
+                            </div>
+                            <div className="card_info">
+                                <p>Empresa: {room.company.name}</p>
+                                <p className="card_platform">capacidade: {room.capacity}</p>
+                            </div>
+                        </Link>
+                        
                     )
                 }, rooms)
             }
+            </section>
         </div>
     )
 }

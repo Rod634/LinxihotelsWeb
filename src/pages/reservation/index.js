@@ -1,6 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import Header from '../../components/Header'
+import './index.css';
 
 export default function Reservation (props){
 
@@ -89,8 +91,6 @@ export default function Reservation (props){
         return filteredReservation;
     }
     
-    console.log(reservations)
-
     function makeReservation(e) {
         e.preventDefault();
 
@@ -128,14 +128,22 @@ export default function Reservation (props){
   
     return (
         <div>
+            <Header />
             {room != null ? (
-                <div>
-                    <div>
-                        <img src={room.image_url}/>
-                        <p>{room.category + " " + room.number + " - " + room.company.name} </p>
+                
+                <div className="container">
+                    
+                    <div className="card_room">
+                        <div className="title">
+                            <h1>{room.category + ' ' + room.number + ' em ' + room.company.name}</h1>
+                        </div>
+
+                        <div className="card_img">
+                            <img src={room.image_url}/>
+                        </div>
                     </div>
                 
-                    <div>
+                    <div className="card_form">
                         <form onSubmit={(e)=>{makeReservation(e)}}>
                             <h1>Reserva</h1>
 

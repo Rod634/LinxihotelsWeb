@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;900&display=swap');
+
+* {
+    margin: 0px;
+    padding: 0px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+html{
+    position: relative;
+    font-size: 72.5%;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    height: 100%;
+}
+
+.background{
+    background-image: url('../../assets/login_background.png');
+    width: 100vw;
+    height: 100vh;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+form{
+    width: 30%;
+    height: 40%;
+    display: grid;
+}
+
+form h1 {
+    text-align: center;
+    font-size: 2.5rem;
+    color: white;
+}
+
+form label {
+    font-size: 1.5rem;
+    margin-top: 10px;
+    color: white;
+}
+
+form input {
+    width: 100%;
+    outline: none;
+    font-size: 1.5rem;
+    color: rgb(59, 59, 59);
+    border-radius: 16px;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+button[type="submit"] {
+    background-color: #4cb982;
+    width: 100%;
+    margin: 1rem 0;
+    padding: 0.8rem;
+    border-radius: 1.6rem;
+    color: white;
+}
+
+.cadastro{
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+    position: relative;
+    padding: 2px 2px;
+    transition: all .2s ease-out;
+}
+
+

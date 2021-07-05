@@ -2,6 +2,8 @@ import React, { useContext, useState } from 'react';
 import { AuthContext } from '../../context/AuthProvider';
 import {Link, Redirect} from 'react-router-dom';
 import { useHistory } from 'react-router';
+import Header from '../../components/Header';
+import './index.css'
 
 export default function SignUp (){
     const [name, setName] = useState('');
@@ -27,45 +29,45 @@ export default function SignUp (){
     }
 
     return (
-        <div className="card">
-            <form onSubmit={SignUpHandle}>
-                <h1>Cadastro</h1>
+        <div className="signUp_background">
+            <Header/>
+            <div className="profile_container">
+                <form onSubmit={SignUpHandle} >
+                    <h1 className="profile_title">Cadastro</h1>
 
-                <label>Imagem de perfil</label>
-                <input type="text" placeholder="jose634" onChange={(e)=>{setImg(e.target.value)}}/>
+                    <label>Imagem de perfil:</label>
+                    <input type="text" placeholder="jose634" onChange={(e)=>{setImg(e.target.value)}}/>
 
-                <label>Nome</label>
-                <input type="text" placeholder="José da Silva" onChange={(e)=>{setName(e.target.value)}}/>
+                    <label>Nome:</label>
+                    <input type="text" placeholder="José da Silva" onChange={(e)=>{setName(e.target.value)}}/>
 
-                <label>Nacionalidade</label>
-                <input type="text" placeholder="Brasileiro" onChange={(e)=>{setNationality(e.target.value)}}/>
+                    <label>Nacionalidade:</label>
+                    <input type="text" placeholder="Brasileiro" onChange={(e)=>{setNationality(e.target.value)}}/>
 
-                <label>Data de Nascimento</label>
-                <input type="date" placeholder="21/03/2000" onChange={(e)=>{setBirth(e.target.value)}}/>
+                    <label>Data de Nascimento:</label>
+                    <input type="date" placeholder="21/03/2000" onChange={(e)=>{setBirth(e.target.value)}}/>
 
-                <label>Endereço</label>
-                <input type="text" placeholder="Rua do marotinho" onChange={(e)=>{setAddress(e.target.value)}}/>
+                    <label>Endereço:</label>
+                    <input type="text" placeholder="Rua do marotinho" onChange={(e)=>{setAddress(e.target.value)}}/>
 
-                <label>Telefone</label>
-                <input type="telephone" placeholder="71987320486" onChange={(e)=>{setContact(e.target.value)}}/>
+                    <label>Telefone:</label>
+                    <input type="telephone" placeholder="71987320486" onChange={(e)=>{setContact(e.target.value)}}/>
 
-                <label>Rg</label>
-                <input type="number" placeholder="13043" onChange={(e)=>{setNumber_id(e.target.value)}}/>
+                    <label>Rg:</label>
+                    <input type="number" placeholder="13043" onChange={(e)=>{setNumber_id(e.target.value)}}/>
 
-                <label>Data de expedição</label>
-                <input type="date" placeholder="21/03/2000" onChange={(e)=>{setIssue_id(e.target.value)}}/>
+                    <label>Data de expedição:</label>
+                    <input type="date" placeholder="21/03/2000" onChange={(e)=>{setIssue_id(e.target.value)}}/>
 
-                <label>E-mail</label>
-                <input type="text" placeholder="email@domain.com" onChange={(e)=>{setEmail(e.target.value)}}/>
+                    <label>E-mail:</label>
+                    <input type="text" placeholder="email@domain.com" onChange={(e)=>{setEmail(e.target.value)}}/>
 
-                <label>Passport</label>
-                <input type="number" placeholder="1489646" onChange={(e)=>{setPassport(e.target.value)}}/>
+                    <label>Passport:</label>
+                    <input type="number" placeholder="1489646" onChange={(e)=>{setPassport(e.target.value)}}/>
 
-                <button type="submit">Cadastrar</button>
-            </form>
-            
-            <Link to="/">Eu já tenho uma conta!</Link>
-
+                    <button type="submit">Cadastrar</button>
+                </form>
+            </div>
         </div>
     )
 }

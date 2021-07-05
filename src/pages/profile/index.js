@@ -2,6 +2,8 @@ import React, {useContext, useState} from 'react';
 import { AuthContext } from '../../context/AuthProvider';
 import { toast } from 'react-toastify';
 import axios from 'axios';
+import Header from '../../components/Header';
+import './index.css';
 
 export default function Profile (){
 
@@ -43,48 +45,51 @@ export default function Profile (){
     }
 
     return (
-        <div>
-            <div>
-                <img src={user.image_url}></img>
+        
+        <div className="profile_background">
+            <Header/>
+            <div className="profile_container">
+                <div className="profile">
+                    <img src={user.image_url}></img>
+                    <h1>{user.name}</h1>
+                </div>
                 <form onSubmit={(e) => {updateProfile(e)}}>
-                <h1>{user.name}</h1>
+                    
+                    <label>Imagem de perfil:</label>
+                    <input type="text" value={img} onChange={(e)=>{setImg(e.target.value)}}/>
 
-                <label>Imagem de perfil</label>
-                <input type="text" value={img} onChange={(e)=>{setImg(e.target.value)}}/>
+                    <label>Nome:</label>
+                    <input type="text" value={name} onChange={(e)=>{setName(e.target.value)}}/>
 
-                <label>Nome</label>
-                <input type="text" value={name} onChange={(e)=>{setName(e.target.value)}}/>
+                    <label>Nacionalidade:</label>
+                    <input type="text" value={nationality} onChange={(e)=>{setNationality(e.target.value)}}/>
 
-                <label>Nacionalidade</label>
-                <input type="text" value={nationality} onChange={(e)=>{setNationality(e.target.value)}}/>
+                    <label>Data de Nascimento:</label>
+                    <input type="date" value={birth} onChange={(e)=>{setBirth(e.target.value)}}/>
 
-                <label>Data de Nascimento</label>
-                <input type="date" value={birth} onChange={(e)=>{setBirth(e.target.value)}}/>
+                    <label>Endereço:</label>
+                    <input type="text" value={address} onChange={(e)=>{setAddress(e.target.value)}}/>
 
-                <label>Endereço</label>
-                <input type="text" value={address} onChange={(e)=>{setAddress(e.target.value)}}/>
+                    <label>Telefone:</label>
+                    <input type="telephone" value={contact} onChange={(e)=>{setContact(e.target.value)}}/>
 
-                <label>Telefone</label>
-                <input type="telephone" value={contact} onChange={(e)=>{setContact(e.target.value)}}/>
+                    <label>Rg:</label>
+                    <input type="number" value={number_id} onChange={(e)=>{setNumber_id(e.target.value)}}/>
 
-                <label>Rg</label>
-                <input type="number" value={number_id} onChange={(e)=>{setNumber_id(e.target.value)}}/>
+                    <label>Data de expedição:</label>
+                    <input type="date" value={issue_id} onChange={(e)=>{setIssue_id(e.target.value)}}/>
 
-                <label>Data de expedição</label>
-                <input type="date" value={issue_id} onChange={(e)=>{setIssue_id(e.target.value)}}/>
+                    <label>E-mail:</label>
+                    <input type="text" value={email} onChange={(e)=>{setEmail(e.target.value)}}/>
 
-                <label>E-mail</label>
-                <input type="text" value={email} onChange={(e)=>{setEmail(e.target.value)}}/>
+                    <label>Passport:</label>
+                    <input type="number" value={passport} onChange={(e)=>{setPassport(e.target.value)}}/>
 
-                <label>Passport</label>
-                <input type="number" value={passport} onChange={(e)=>{setPassport(e.target.value)}}/>
-
-                <button type="submit">atualizar</button>
-            </form>
+                    <button type="submit">atualizar</button>
+                </form>
             </div>
-            <button onClick={ () => signOut() } >
-               Sair
-            </button>
+
+            
         </div>
     )
 }

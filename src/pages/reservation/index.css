@@ -1,0 +1,70 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+html{
+    position: relative;
+    font-size: 72.5%;
+    overflow-x: hidden !important;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    height: 100%;
+}
+
+.container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+}
+
+.card_room {
+    width: 50%;
+}
+
+.card_form {
+    width: 50%;
+}
+
+.card_form form {
+    margin-left: 10%;
+}
+
+.title {
+    text-align: left;
+    margin-left: 25%;
+    margin-top: 5%;
+}
+
+.card_img {
+    width: 50vw;
+    height: 80vh;
+    overflow: hidden; 
+    margin-left: 5%;
+    margin-top: 5%;
+}
+
+.card_img img{
+    width: 100%;
+}
+
+.card_form form label {
+    color: black;
+    margin-bottom: 10px;
+}
+
+.card_form form input {
+    padding: 2%;
+    width: 40vw;
+}
+
+.card_form form select {
+    padding: 2%;
+    width: 40vw;
+    height: 15vh;
+}

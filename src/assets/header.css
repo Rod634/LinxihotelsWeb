@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;900&display=swap');
+
+* {
+    margin: 0px;
+    padding: 0px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+html{
+    position: relative;
+    font-size: 62.5%;
+}
+
+
+header{
+    width: 100vw;
+    background-color: black;
+    opacity: 0.9;
+}
+
+header h1 {
+    color: white;
+    padding-top: 10px;
+    text-align: center;
+}
+
+.menu {
+    text-align: end;
+    padding-right: 10px;
+}
+
+.link-header {
+    font-size: 1.4rem;
+    color: white;
+    margin-right: 10px;
+    text-decoration: none;
+}
+
+.link-header:hover {
+    color: cornflowerblue;
+}

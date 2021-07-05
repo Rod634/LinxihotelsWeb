@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { AuthContext } from '../../context/AuthProvider';
 import {Link} from 'react-router-dom';
+import './index.css'
 
 export default function SignIn (){
 
@@ -16,21 +17,19 @@ export default function SignIn (){
     }
 
     return (
-        <div className="card">
+        <div className="background">
             <form onSubmit={SignInHandle}>
                 <h1>Login</h1>
 
-                <label>Username</label>
+                <label>Nome:</label>
                 <input type="text" placeholder="joaozinho" onChange={(e)=>{setUsername(e.target.value)}}/>
 
-                <label>Password</label>
+                <label>Senha:</label>
                 <input type="password" placeholder="****" onChange={(e)=>{setPasswd(e.target.value)}}/>
 
                 <button type="submit">Logar</button>
+                <Link className="cadastro" to="/signUp">Cadastro ?</Link>
             </form>
-            
-            <Link to="/signUp">Cadastro ?</Link>
-
         </div>
     )
 }

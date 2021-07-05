@@ -1,0 +1,47 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+html{
+    position: relative;
+    font-size: 72.5%;
+    overflow-x: hidden !important;
+}
+
+.profile_title{
+    margin-bottom: 5%;
+}
+
+.signUp_background{
+    background-image: url(../../assets/profile_background.jpg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.profile_container{
+    width: 40%;
+    background-color: black;
+    opacity: 0.9;
+}
+
+.profile_container form {
+    width: 80%;
+    margin-left: 7%;
+}
+
+.profile_container form  label{
+    color: white;
+    margin-left: 1%;
+    margin-bottom: 2%;
+}
+
+.profile_container form  input{
+    margin-left: 1%;
+    margin-bottom: 2%;
+    border-color: white;
+    color: black;
+}

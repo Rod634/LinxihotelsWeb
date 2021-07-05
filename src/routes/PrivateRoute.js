@@ -10,7 +10,7 @@ export default function PrivateRoute({
     {
         const {signed} = useContext(AuthContext);
         if(!signed && isPrivate){
-            return ( <Redirect to="/signIn"/> );
+            return ( <Redirect to="/"/> );
         }
 
         if(signed && (!isPrivate)){
