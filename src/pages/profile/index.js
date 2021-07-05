@@ -7,7 +7,8 @@ import './index.css';
 
 export default function Profile (){
 
-    const { signOut, user} = useContext(AuthContext);
+
+    const { user} = useContext(AuthContext);
     const [name, setName] = useState(user.name);
     const [img, setImg] = useState(user.image_url);
     const [nationality, setNationality] = useState(user.name);
@@ -19,11 +20,9 @@ export default function Profile (){
     const [passport, setPassport] = useState(user.passport);
     const [email, setEmail] = useState(user.email);
     
-    console.log(user);
-
     function updateProfile(e) {
         e.preventDefault();
-        axios.patch('http://127.0.0.1:8000/customer/' + user.id + "/", {
+        axios.patch('https://rod634.pythonanywhere.com/customer/' + user.id + "/", {
             name: name,
             nationality: nationality,
             birth_date: birth,
@@ -45,7 +44,6 @@ export default function Profile (){
     }
 
     return (
-        
         <div className="profile_background">
             <Header/>
             <div className="profile_container">

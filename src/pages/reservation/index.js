@@ -26,7 +26,7 @@ export default function Reservation (props){
     }, []);
 
     async function loadServices(){
-        await axios.get('http://127.0.0.1:8000/service/')
+        await axios.get('https://rod634.pythonanywhere.com/service/')
         .then(function(data){
             setService(data.data);
         })
@@ -36,7 +36,7 @@ export default function Reservation (props){
     }
 
     async function loadRoom(){
-        await axios.get(`http://127.0.0.1:8000/room/${id}/`)
+        await axios.get(`https://rod634.pythonanywhere.com/room/${id}/`)
         .then(function (data) {
             setRoom(data.data);
             setCompany(data.data.company);
@@ -73,7 +73,7 @@ export default function Reservation (props){
     }
 
     async function loadReservations(){
-        await axios.get('http://127.0.0.1:8000/reservation/', getHeader())
+        await axios.get('https://rod634.pythonanywhere.com/reservation/', getHeader())
         .then(function (data) {
             var reservationList = data.data;
             setReservations(reservationList);
@@ -98,7 +98,7 @@ export default function Reservation (props){
 
         if(cardCode !== null && cardNumber !== null){
             if(filter.length === 0){
-                axios.post('http://127.0.0.1:8000/reservation/', getParams(), getHeader())
+                axios.post('https://rod634.pythonanywhere.com/reservation/', getParams(), getHeader())
                 .then(function (data) {
                     toast.success('Seu quarto foi reservado!');
                 })
@@ -107,7 +107,7 @@ export default function Reservation (props){
                     toast.error('Ops... algo de errado aconteceu!');
                 })
             }else{
-                axios.patch('http://127.0.0.1:8000/reservation/' + filter[0].id  + '/', getParams(), getHeader())
+                axios.patch('https://rod634.pythonanywhere.com/reservation/' + filter[0].id  + '/', getParams(), getHeader())
                 .then(function (data) {
                     toast.success('Sua Reserva foi ajustada!');
                 })

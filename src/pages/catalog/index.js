@@ -9,7 +9,7 @@ export default function Catalog (){
     const [rooms, setRooms] = useState([]);
     
      function loadRooms(){
-        axios.get('http://127.0.0.1:8000/room/')
+        axios.get('https://rod634.pythonanywhere.com/room/')
         .then(function (data) {
             setRooms(data.data);
         })

@@ -30,7 +30,7 @@ export default function AuthProvider({children}){
     }
 
     function signUp(name, nationality, birth, addres, contact, number_id, issue_id, passport, email, img){
-        axios.post('http://127.0.0.1:8000/customer/', {
+        axios.post('https://rod634.pythonanywhere.com/customer/', {
             name: name,
             nationality: nationality,
             birth_date: birth,
@@ -52,7 +52,7 @@ export default function AuthProvider({children}){
     }
 
     function signIn(username, passwd){
-        axios.post('http://127.0.0.1:8000/api/token/', {
+        axios.post('https://rod634.pythonanywhere.com/api/token/', {
             username: username,
             password: passwd
         })
@@ -76,7 +76,7 @@ export default function AuthProvider({children}){
     }
 
     function getUserAndSet(user){
-        axios.get('http://127.0.0.1:8000/customer/')
+        axios.get('https://rod634.pythonanywhere.com/customer/')
         .then(function (data) {
             data.data.map((d) => {
                 if(d.name == user){

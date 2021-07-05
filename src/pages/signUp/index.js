@@ -1,7 +1,5 @@
 import React, { useContext, useState } from 'react';
 import { AuthContext } from '../../context/AuthProvider';
-import {Link, Redirect} from 'react-router-dom';
-import { useHistory } from 'react-router';
 import Header from '../../components/Header';
 import './index.css'
 
@@ -18,13 +16,11 @@ export default function SignUp (){
     const [email, setEmail] = useState('');
     //const [passwd, setPasswd] = useState('');
     const {signUp} = useContext(AuthContext);
-    let history = useHistory();
 
     function SignUpHandle(e){
         e.preventDefault();
         if(passport !== '' || (number_id !== '' && issue_id !== '')){
             signUp(name, nationality, birth, address, contact, number_id, issue_id, passport, email, img)
-            history.push('/signIn');
         }
     }
 
